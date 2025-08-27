@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us • Brew Haven</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="enquiries.html">Enquiries</a>
+    <a href="about.html" aria-current="page">Home</a>
+    <a href="products.html">Shop</a>
+    <a href="contact.html">Contact</a>
+    <a href="reviews.html">Reviews</a>
+  </nav>
+
+  <main>
+    <h1>About Brew Haven</h1>
+    <p>
+      Founded in 2015 in Cape Town, Brew Haven Coffee Roasters is a family-owned coffee company passionate about
+      sourcing, roasting, and serving only the finest beans. Our mission is simple: to deliver memorable coffee
+      experiences while supporting sustainable farming communities.
+    </p>
+
+    <h2>Meet the Team</h2>
+    <ul>
+      <li><strong>Founder & Roastmaster:</strong> James</li>
+      <li><strong>Operations Lead:</strong> Iris</li>
+      <li><strong>Head Barista:</strong> Maggie</li>
+      <li><strong>Team:</strong> Cylan, Verso, Lune, Rick, Kirsten</li>
+      <li><strong>Community & PR:</strong> Clive</li>
+    </ul>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Brew Haven Coffee Roasters • Cape Town, South Africa
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop • Brew Haven</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      margin-top: 2rem;
+    }
+    .product {
+      text-align: center;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .product img {
+      max-width: 100%;
+      border-radius: 6px;
+    }
+    .price {
+      font-weight: bold;
+      margin-top: 0.5rem;
+      color: #6f4e37;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="products.html" aria-current="page">Shop</a>
+    <a href="contact.html">Contact</a>
+    <a href="reviews.html">Reviews</a>
+  </nav>
+
+  <main>
+    <h1>Our Coffee Selection</h1>
+    <p>Freshly roasted beans, ethically sourced from across the globe.</p>
+
+    <div class="grid">
+      <div class="product">
+        <img src="images/img.png" height="300px" alt="Ethiopian Single Origin">
+        <p>Ethiopian Single Origin</p>
+        <p class="price">R120 / 250g</p>
+      </div>
+      <div class="product">
+        <img src="images/istockphoto-1268445567-612x612.jpg" height="300px" alt="Colombian Dark Roast">
+        <p>Colombian Dark Roast</p>
+        <p class="price">R100 / 250g</p>
+      </div>
+      <div class="product">
+        <img src="images/imga.WEBP" height="300px" alt="House Blend">
+        <p>Brew Haven House Blend</p>
+        <p class="price">R95 / 250g</p>
+      </div>
+      <div class="product">
+        <img src="images/imgb.WEBP" height="300px" alt="Decaf Roast">
+        <p>Decaf Roast</p>
+        <p class="price">R110 / 250g</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Brew Haven Coffee Roasters • Cape Town, South Africa
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

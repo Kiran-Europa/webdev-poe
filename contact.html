@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact • Brew Haven</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="products.html">Shop</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+    <a href="reviews.html">Reviews</a>
+  </nav>
+
+  <main>
+    <h1>Contact Us</h1>
+    <p>
+      Have a question about our coffee, subscriptions, or wholesale orders?  
+      Reach us through the form below or connect on social media.
+    </p>
+
+    <ul>
+      <li>Facebook: <a href="#">@BrewHavenCoffee</a></li>
+      <li>Instagram: <a href="#">@BrewHavenCoffee</a></li>
+      <li>Email: <a href="mailto:info@brewhaven.co.za">info@brewhaven.co.za</a></li>
+      <li>Phone: +27 60 123 4567</li>
+    </ul>
+
+    <form>
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <input type="submit" value="Send Message">
+    </form>
+
+    <h2>Visit Our Roastery</h2>
+    <iframe src="https://www.google.com/maps/embed?...(your Cape Town location here)..." width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Brew Haven Coffee Roasters • Cape Town, South Africa
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
