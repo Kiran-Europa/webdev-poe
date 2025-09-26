@@ -1,6 +1,4 @@
-/* -------------------------------
-   1. Base Styles & Reset
----------------------------------- */
+/* 1. Base Styles & Reset */
 * {
   margin: 0;
   padding: 0;
@@ -21,9 +19,8 @@ body {
   margin: 0;
 }
 
-/* -------------------------------
-   2. Navigation
----------------------------------- */
+
+   /* 2. Navigation */
 nav {
   background: #4b2e2e;   /* burgundy / deep brown */
   padding: 1rem;
@@ -54,9 +51,7 @@ nav a[aria-current="page"] {
   text-decoration: underline;
 }
 
-/* -------------------------------
-   3. Main Content
----------------------------------- */
+/* 3. Main Content */
 main {
   max-width: 900px;
   margin: 2rem auto;
@@ -87,9 +82,7 @@ ul {
   padding-left: 1.25rem;
 }
 
-/* -------------------------------
-   4. Forms
----------------------------------- */
+/* 4. Forms */
 form {
   display: grid;
   gap: 1rem;
@@ -131,9 +124,7 @@ input[type="submit"]:focus {
   background: #4b2e2e;
 }
 
-/* -------------------------------
-   5. Images
----------------------------------- */
+/* 5. Images */
 img {
   max-width: 100%;
   height: auto;
@@ -141,9 +132,7 @@ img {
   display: block;
 }
 
-/* -------------------------------
-   6. Footer
----------------------------------- */
+/* 6. Footer */
 footer {
   background: #4b2e2e;
   color: #fff;
@@ -154,9 +143,7 @@ footer {
   box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
 }
 
-/* -------------------------------
-   7. Responsive Design
----------------------------------- */
+/* 7. Responsive Design */
 
 /* Tablets */
 @media (max-width: 768px) {
