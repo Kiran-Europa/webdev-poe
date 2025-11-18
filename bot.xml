@@ -1,0 +1,7 @@
+[file name]: robots.txt
+[file content begin]
+User-agent: *
+Allow: /
+
+Sitemap: https://www.brewhaven.co.za/sitemap.xml
+[file content end]

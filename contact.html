@@ -2,7 +2,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact • Brew Haven</title>
+  <title>Contact • Brew Haven Coffee Roasters</title>
+  <meta name="description" content="Get in touch with Brew Haven Coffee Roasters. Visit our Cape Town roastery, call, or send us a message. We'd love to hear from you!">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,7 +13,7 @@
     <a href="about.html">About Us</a>
     <a href="products.html">Shop</a>
     <a href="contact.html" aria-current="page">Contact</a>
-    <a href="reviews.html">Reviews</a>
+    <a href="enquiry.html">Enquiries</a>
   </nav>
 
   <main>
@@ -22,29 +23,98 @@
       Reach us through the form below or connect on social media.
     </p>
 
-    <ul>
-      <li>Facebook: <a href="#">@BrewHavenCoffee</a></li>
-      <li>Instagram: <a href="#">@BrewHavenCoffee</a></li>
-      <li>Email: <a href="mailto:info@brewhaven.co.za">info@brewhaven.co.za</a></li>
-      <li>Phone: +27 60 123 4567</li>
-    </ul>
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message">
+      Thank you for your message! We'll get back to you within 24 hours.
+    </div>
 
-    <form>
-      <label for="name">Your Name</label>
-      <input type="text" id="name" name="name" required>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+      <div>
+        <h2>Get in Touch</h2>
+        <ul>
+          <li><strong>Address:</strong> 123 Coffee Street, Cape Town, 8001</li>
+          <li><strong>Phone:</strong> +27 21 123 4567</li>
+          <li><strong>Email:</strong> <a href="mailto:info@brewhaven.co.za">info@brewhaven.co.za</a></li>
+          <li><strong>Hours:</strong> Mon-Fri 7AM-6PM, Sat-Sun 8AM-4PM</li>
+        </ul>
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required>
+        <div style="margin-top: 1.5rem;">
+          <h3>Follow Us</h3>
+          <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+            <a href="#" style="color: #6f4e37; text-decoration: none;">Facebook</a>
+            <a href="#" style="color: #6f4e37; text-decoration: none;">Instagram</a>
+            <a href="#" style="color: #6f4e37; text-decoration: none;">Twitter</a>
+          </div>
+        </div>
+      </div>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" required></textarea>
+      <form id="contactForm">
+        <div>
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+          <div id="nameError" class="error">Please enter your name</div>
+        </div>
 
-      <input type="submit" value="Send Message">
-    </form>
+        <div>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+          <div id="emailError" class="error">Please enter a valid email</div>
+        </div>
+
+        <div>
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" pattern="[0-9+\-\s()]{10,}" placeholder="+27 12 345 6789">
+          <div id="phoneError" class="error">Please enter a valid phone number</div>
+        </div>
+
+        <div>
+          <label for="messageType">Message Type</label>
+          <select id="messageType" name="messageType" required>
+            <option value="">Select an option</option>
+            <option value="general">General Question</option>
+            <option value="support">Customer Support</option>
+            <option value="wholesale">Wholesale Inquiry</option>
+            <option value="feedback">Feedback</option>
+          </select>
+          <div id="messageTypeError" class="error">Please select a message type</div>
+        </div>
+
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+          <div id="messageError" class="error">Please enter your message</div>
+        </div>
+
+        <input type="submit" value="Send Message">
+      </form>
+    </div>
 
     <h2>Visit Our Roastery</h2>
-    <iframe src="https://www.google.com/maps/embed?...(your Cape Town location here)..." width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <div id="map" style="height: 400px; background: #f8f8f8; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 1rem 0;">
+      <div style="text-align: center; color: #666;">
+        <p>📍 Interactive Map</p>
+        <p>123 Coffee Street, Cape Town</p>
+        <button id="openMapModal" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #6f4e37; color: white; border: none; border-radius: 4px; cursor: pointer;">
+          View Larger Map
+        </button>
+      </div>
+    </div>
   </main>
+
+  <!-- Map Modal -->
+  <div id="mapModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Our Location</h2>
+      <div style="height: 400px; background: #f8f8f8; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin: 1rem 0;">
+        <div style="text-align: center;">
+          <p>📍 Google Maps Integration</p>
+          <p>123 Coffee Street, Cape Town, 8001</p>
+          <p><em>Add your Google Maps API key to enable interactive maps</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
     © <span id="year"></span> Brew Haven Coffee Roasters • Cape Town, South Africa
@@ -52,6 +122,135 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Form Validation
+    const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      if (validateContactForm()) {
+        simulateContactSubmission();
+      }
+    });
+
+    function validateContactForm() {
+      let isValid = true;
+      
+      // Name validation
+      const name = document.getElementById('name');
+      const nameError = document.getElementById('nameError');
+      if (name.value.trim().length < 2) {
+        nameError.style.display = 'block';
+        name.classList.add('input-error');
+        isValid = false;
+      } else {
+        nameError.style.display = 'none';
+        name.classList.remove('input-error');
+      }
+
+      // Email validation
+      const email = document.getElementById('email');
+      const emailError = document.getElementById('emailError');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value)) {
+        emailError.style.display = 'block';
+        email.classList.add('input-error');
+        isValid = false;
+      } else {
+        emailError.style.display = 'none';
+        email.classList.remove('input-error');
+      }
+
+      // Phone validation (optional but must be valid if provided)
+      const phone = document.getElementById('phone');
+      const phoneError = document.getElementById('phoneError');
+      if (phone.value && !/^[0-9+\-\s()]{10,}$/.test(phone.value)) {
+        phoneError.style.display = 'block';
+        phone.classList.add('input-error');
+        isValid = false;
+      } else {
+        phoneError.style.display = 'none';
+        phone.classList.remove('input-error');
+      }
+
+      // Message type validation
+      const messageType = document.getElementById('messageType');
+      const messageTypeError = document.getElementById('messageTypeError');
+      if (!messageType.value) {
+        messageTypeError.style.display = 'block';
+        messageType.classList.add('input-error');
+        isValid = false;
+      } else {
+        messageTypeError.style.display = 'none';
+        messageType.classList.remove('input-error');
+      }
+
+      // Message validation
+      const message = document.getElementById('message');
+      const messageError = document.getElementById('messageError');
+      if (message.value.trim().length < 10) {
+        messageError.style.display = 'block';
+        message.classList.add('input-error');
+        isValid = false;
+      } else {
+        messageError.style.display = 'none';
+        message.classList.remove('input-error');
+      }
+
+      return isValid;
+    }
+
+    function simulateContactSubmission() {
+      const submitBtn = contactForm.querySelector('input[type="submit"]');
+      const originalText = submitBtn.value;
+      submitBtn.value = 'Sending...';
+      submitBtn.disabled = true;
+
+      // Simulate compiling email (in real implementation, this would use mailto: or server-side)
+      const formData = new FormData(contactForm);
+      const emailBody = `Name: ${formData.get('name')}
+Email: ${formData.get('email')}
+Phone: ${formData.get('phone')}
+Type: ${formData.get('messageType')}
+Message: ${formData.get('message')}`;
+
+      console.log('Email would be sent to: info@brewhaven.co.za');
+      console.log('Email content:', emailBody);
+
+      setTimeout(() => {
+        successMessage.style.display = 'block';
+        successMessage.scrollIntoView({ behavior: 'smooth' });
+        contactForm.reset();
+        submitBtn.value = originalText;
+        submitBtn.disabled = false;
+        
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 5000);
+      }, 1500);
+    }
+
+    // Modal functionality
+    const mapModal = document.getElementById('mapModal');
+    const openMapBtn = document.getElementById('openMapModal');
+    const closeModal = document.querySelector('.close-modal');
+
+    openMapBtn.addEventListener('click', () => {
+      mapModal.style.display = 'block';
+    });
+
+    closeModal.addEventListener('click', () => {
+      mapModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === mapModal) {
+        mapModal.style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>
+[file content end]

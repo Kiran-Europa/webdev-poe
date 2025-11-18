@@ -2,7 +2,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop • Brew Haven</title>
+  <title>Shop • Brew Haven Coffee Roasters</title>
+  <meta name="description" content="Shop Brew Haven's premium coffee selection. Ethiopian single origin, Colombian dark roast, house blend, and decaf options. Freshly roasted in Cape Town.">
   <link rel="stylesheet" href="style.css">
   <style>
     .grid {
@@ -17,15 +18,31 @@
       padding: 1rem;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     .product img {
       max-width: 100%;
       border-radius: 6px;
+      height: 200px;
+      object-fit: cover;
     }
     .price {
       font-weight: bold;
       margin-top: 0.5rem;
       color: #6f4e37;
+    }
+    .product-title {
+      font-weight: 600;
+      margin: 0.5rem 0;
+    }
+    .product-category {
+      color: #666;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -36,36 +53,82 @@
     <a href="about.html">About Us</a>
     <a href="products.html" aria-current="page">Shop</a>
     <a href="contact.html">Contact</a>
-    <a href="reviews.html">Reviews</a>
+    <a href="enquiry.html">Enquiries</a>
   </nav>
 
   <main>
     <h1>Our Coffee Selection</h1>
     <p>Freshly roasted beans, ethically sourced from across the globe.</p>
 
-    <div class="grid">
-      <div class="product">
-        <img src="images/img.png" height="300px" alt="Ethiopian Single Origin">
-        <p>Ethiopian Single Origin</p>
-        <p class="price">R120 / 250g</p>
+    <!-- Search and Filter -->
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search coffees...">
+      <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All Coffees</button>
+      <button class="filter-btn" data-filter="single-origin">Single Origin</button>
+      <button class="filter-btn" data-filter="blend">Blends</button>
+      <button class="filter-btn" data-filter="dark">Dark Roast</button>
+      <button class="filter-btn" data-filter="decaf">Decaf</button>
+    </div>
+
+    <div id="productsGrid" class="grid">
+      <div class="product" data-category="single-origin" data-name="ethiopian single origin">
+        <img src="images/img.png" alt="Ethiopian Single Origin - Floral and fruity coffee beans" data-lightbox="ethiopian">
+        <div class="product-title">Ethiopian Single Origin</div>
+        <div class="product-category">Single Origin</div>
+        <div class="price">R120 / 250g</div>
+        <p class="product-description">Bright and floral with notes of berry and citrus</p>
       </div>
-      <div class="product">
-        <img src="images/istockphoto-1268445567-612x612.jpg" height="300px" alt="Colombian Dark Roast">
-        <p>Colombian Dark Roast</p>
-        <p class="price">R100 / 250g</p>
+      <div class="product" data-category="dark" data-name="colombian dark roast">
+        <img src="images/istockphoto-1268445567-612x612.jpg" alt="Colombian Dark Roast - Rich dark roasted coffee beans" data-lightbox="colombian">
+        <div class="product-title">Colombian Dark Roast</div>
+        <div class="product-category">Dark Roast</div>
+        <div class="price">R100 / 250g</div>
+        <p class="product-description">Rich and bold with chocolate and caramel notes</p>
       </div>
-      <div class="product">
-        <img src="images/imga.WEBP" height="300px" alt="House Blend">
-        <p>Brew Haven House Blend</p>
-        <p class="price">R95 / 250g</p>
+      <div class="product" data-category="blend" data-name="brew haven house blend">
+        <img src="images/imga.WEBP" alt="Brew Haven House Blend - Balanced medium roast coffee" data-lightbox="house-blend">
+        <div class="product-title">Brew Haven House Blend</div>
+        <div class="product-category">Blend</div>
+        <div class="price">R95 / 250g</div>
+        <p class="product-description">Balanced and smooth with nutty and sweet notes</p>
       </div>
-      <div class="product">
-        <img src="images/imgb.WEBP" height="300px" alt="Decaf Roast">
-        <p>Decaf Roast</p>
-        <p class="price">R110 / 250g</p>
+      <div class="product" data-category="decaf" data-name="decaf roast">
+        <img src="images/imgb.WEBP" alt="Decaf Roast - Swiss water process decaffeinated coffee" data-lightbox="decaf">
+        <div class="product-title">Decaf Roast</div>
+        <div class="product-category">Decaf</div>
+        <div class="price">R110 / 250g</div>
+        <p class="product-description">Smooth and flavorful Swiss water process decaf</p>
+      </div>
+      <div class="product" data-category="single-origin" data-name="kenyan aa">
+        <img src="images/img.png" alt="Kenyan AA - Premium African coffee beans" data-lightbox="kenyan">
+        <div class="product-title">Kenyan AA</div>
+        <div class="product-category">Single Origin</div>
+        <div class="price">R130 / 250g</div>
+        <p class="product-description">Complex with wine-like acidity and berry notes</p>
+      </div>
+      <div class="product" data-category="blend" data-name="espresso blend">
+        <img src="images/imga.WEBP" alt="Espresso Blend - Perfect for espresso brewing" data-lightbox="espresso">
+        <div class="product-title">Espresso Blend</div>
+        <div class="product-category">Blend</div>
+        <div class="price">R105 / 250g</div>
+        <p class="product-description">Rich crema with dark chocolate and spice notes</p>
       </div>
     </div>
   </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div class="lightbox-nav">
+      <button id="prev-btn">&#10094;</button>
+      <button id="next-btn">&#10095;</button>
+    </div>
+  </div>
 
   <footer>
     © <span id="year"></span> Brew Haven Coffee Roasters • Cape Town, South Africa
@@ -73,6 +136,113 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Search and Filter functionality
+    const searchInput = document.getElementById('searchInput');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const products = document.querySelectorAll('.product');
+
+    // Search functionality
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      
+      products.forEach(product => {
+        const productName = product.getAttribute('data-name').toLowerCase();
+        const productDescription = product.querySelector('.product-description').textContent.toLowerCase();
+        
+        if (productName.includes(searchTerm) || productDescription.includes(searchTerm)) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    });
+
+    // Filter functionality
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        
+        products.forEach(product => {
+          const category = product.getAttribute('data-category');
+          
+          if (filter === 'all' || category === filter) {
+            product.style.display = 'block';
+          } else {
+            product.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeLightbox = document.querySelector('.close-lightbox');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    let currentImageIndex = 0;
+    const lightboxImages = Array.from(document.querySelectorAll('[data-lightbox]'));
+
+    // Open lightbox when image is clicked
+    products.forEach((product, index) => {
+      const img = product.querySelector('img');
+      img.addEventListener('click', () => {
+        currentImageIndex = index;
+        openLightbox(img.src, img.alt);
+      });
+    });
+
+    function openLightbox(src, alt) {
+      lightbox.style.display = 'block';
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+    }
+
+    function closeLightboxFunc() {
+      lightbox.style.display = 'none';
+    }
+
+    function showImage(index) {
+      if (index >= 0 && index < lightboxImages.length) {
+        const img = lightboxImages[index];
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        currentImageIndex = index;
+      }
+    }
+
+    closeLightbox.addEventListener('click', closeLightboxFunc);
+    
+    prevBtn.addEventListener('click', () => {
+      showImage(currentImageIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      showImage(currentImageIndex + 1);
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.style.display === 'block') {
+        if (e.key === 'Escape') closeLightboxFunc();
+        if (e.key === 'ArrowLeft') showImage(currentImageIndex - 1);
+        if (e.key === 'ArrowRight') showImage(currentImageIndex + 1);
+      }
+    });
+
+    // Close lightbox when clicking outside image
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightboxFunc();
+      }
+    });
   </script>
 </body>
 </html>
+[file content end]
